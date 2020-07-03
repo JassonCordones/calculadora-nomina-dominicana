@@ -1,0 +1,33 @@
+{
+  "name": "calculadora-nomina-dominicana",
+  "version": "1.0.0",
+  "description": "Función para calcular la nómina dominicana",
+  "main": "./dist/index.min.js",
+  "types": "./src/types/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejandro-villa-c/calculadora-nomina-dominicana.git"
+  },
+  "keywords": [
+    "calculadora",
+    "nomina",
+    "dominicana",
+    "calculator",
+    "payroll",
+    "dominican",
+    "sfs",
+    "afp",
+    "isr",
+    "salario",
+    "salary"
+  ],
+  "author": "Alejandro Villa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alejandro-villa-c/calculadora-nomina-dominicana/issues"
+  },
+  "homepage": "https://github.com/alejandro-villa-c/calculadora-nomina-dominicana#readme"
+}
