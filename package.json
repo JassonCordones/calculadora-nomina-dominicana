@@ -1,6 +1,6 @@
 {
   "name": "calculadora-nomina-dominicana",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Función para calcular la nómina dominicana",
   "main": "./dist/index.min.js",
   "types": "./src/types/index.d.ts",
@@ -22,7 +22,8 @@
     "afp",
     "isr",
     "salario",
-    "salary"
+    "salary",
+    "dop"
   ],
   "author": "Alejandro Villa",
   "license": "ISC",

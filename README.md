@@ -27,9 +27,12 @@ yarn add calculadora-nomina-dominicana
 ```javascript
 import calculateDominicanPayroll from 'calculadora-nomina-dominicana';
 
+/**
+ * @param {number} monthlySalary - Salario mensual
+ */
 calculateDominicanPayroll(45000);
 
-/** Retorna un objeto con la estructura siguiente / Returns an object with the following structure */
+// Retorna un objeto con la estructura siguiente / Returns an object with the following structure
 const payroll = {
     /** Salario mensual */
     monthlySalary: 45000,
@@ -44,4 +47,6 @@ const payroll = {
     /** Retenciones */
     deductions: 3807.825
 };
+
+// La moneda utilizada es el peso dominicano / The currency used is the dominican peso
 ```
