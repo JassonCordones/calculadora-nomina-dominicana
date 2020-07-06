@@ -6,18 +6,18 @@ function calculateDominicanPayroll(monthlySalary) {
     const isrScales = {
         first:  { 
             threshold: 34685, 
-            rate:0.15, 
+            rate: 0.15, 
             fixedAmount: 0
-            },
+        },
         second: { 
             threshold: 52027.4167, 
             rate: 0.20, 
-            fixedAmount:2601.33 
+            fixedAmount: 2601.33 
         },
         third:  { 
             threshold: 72260.25, 
-            rate: 0.25, 
-            fixedAmount:6648
+            rate: 0.25,
+            fixedAmount: 6648
         }
     };
 
@@ -29,22 +29,14 @@ function calculateDominicanPayroll(monthlySalary) {
     let isr = 0;
 
     if (netMonthlySalaryBeforeIsr >= isrScales.third.threshold) {
-
         const exceeding = netMonthlySalaryBeforeIsr - isrScales.third.threshold;
-        isr = isrScales.third.fixedAmount + exceeding * isrScales.third.rate
-
-    }else if(netMonthlySalaryBeforeIsr<isrScales.third.threshold && netMonthlySalaryBeforeIsr >= isrScales.second.threshold){
-
+        isr = isrScales.third.fixedAmount + (exceeding * isrScales.third.rate);
+    } else if (netMonthlySalaryBeforeIsr < isrScales.third.threshold && netMonthlySalaryBeforeIsr >= isrScales.second.threshold) {
         const exceeding = netMonthlySalaryBeforeIsr - isrScales.second.threshold;
-        isr = isrScales.second.fixedAmount + exceeding * isrScales.second.rate
-
-    }else if(netMonthlySalaryBeforeIsr<isrScales.second.threshold && netMonthlySalaryBeforeIsr >= isrScales.first.threshold){
-
+        isr = isrScales.second.fixedAmount + (exceeding * isrScales.second.rate);
+    } else if (netMonthlySalaryBeforeIsr < isrScales.second.threshold && netMonthlySalaryBeforeIsr >= isrScales.first.threshold) {
         const exceeding = netMonthlySalaryBeforeIsr - isrScales.first.threshold;
-        isr = isrScales.first.fixedAmount + exceeding * isrScales.first.rate
-
-    }else{
-        isr = 0
+        isr = isrScales.first.fixedAmount + exceeding * isrScales.first.rate;
     }
 
     const deductions = sfs + afp + isr
