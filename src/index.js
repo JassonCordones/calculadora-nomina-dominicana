@@ -3,36 +3,52 @@ function calculateDominicanPayroll(monthlySalary) {
         return null;
     }
 
-    const sfs = monthlySalary * 0.0304;
-    const afp = monthlySalary * 0.0287;
-    const monthlyDeductionsBeforeIsr = sfs + afp;
-    const netMonthlySalaryBeforeIsr = monthlySalary - monthlyDeductionsBeforeIsr;
-    let isr = 0;
-
     const isrScales = {
-        first: 34685,
-        second: 52027.4167,
-        third: 72260.25
+        first:  { 
+            threshold: 34685, 
+            rate:0.15, 
+            fixedAmount: 0
+            },
+        second: { 
+            threshold: 52027.4167, 
+            rate: 0.20, 
+            fixedAmount:2601.33 
+        },
+        third:  { 
+            threshold: 72260.25, 
+            rate: 0.25, 
+            fixedAmount:6648
+        }
     };
 
-    if (netMonthlySalaryBeforeIsr >= isrScales.first && netMonthlySalaryBeforeIsr <= isrScales.second) {
-        const exceeding = netMonthlySalaryBeforeIsr - isrScales.first;
-        const fifteenPercent = exceeding * 0.15;
-        isr = fifteenPercent;
-    } else if (netMonthlySalaryBeforeIsr >= isrScales.second && netMonthlySalaryBeforeIsr <= isrScales.third) {
-        const exceeding = netMonthlySalaryBeforeIsr - isrScales.second;
-        const twentyPercent = exceeding * 0.20;
-        const fixedAmount = 2601.33;
-        isr = fixedAmount + twentyPercent;
-    } else if (netMonthlySalaryBeforeIsr >= isrScales.third) {
-        const exceeding = netMonthlySalaryBeforeIsr - isrScales.third;
-        const twentyFivePercent = exceeding * 0.25;
-        const fixedAmount = 6648;
-        isr = fixedAmount + twentyFivePercent;
+    const sfsRate = 0.0304;
+    const afpRate = 0.0287;
+    const sfs = sfsRate * monthlySalary;
+    const afp = afpRate * monthlySalary;
+    const netMonthlySalaryBeforeIsr = monthlySalary - (sfs + afp);
+    let isr = 0;
+
+    if (netMonthlySalaryBeforeIsr >= isrScales.third.threshold) {
+
+        const exceeding = netMonthlySalaryBeforeIsr - isrScales.third.threshold;
+        isr = isrScales.third.fixedAmount + exceeding * isrScales.third.rate
+
+    }else if(netMonthlySalaryBeforeIsr<isrScales.third.threshold && netMonthlySalaryBeforeIsr >= isrScales.second.threshold){
+
+        const exceeding = netMonthlySalaryBeforeIsr - isrScales.second.threshold;
+        isr = isrScales.second.fixedAmount + exceeding * isrScales.second.rate
+
+    }else if(netMonthlySalaryBeforeIsr<isrScales.second.threshold && netMonthlySalaryBeforeIsr >= isrScales.first.threshold){
+
+        const exceeding = netMonthlySalaryBeforeIsr - isrScales.first.threshold;
+        isr = isrScales.first.fixedAmount + exceeding * isrScales.first.rate
+
+    }else{
+        isr = 0
     }
 
-    const deductions = monthlyDeductionsBeforeIsr + isr;
-    const netMonthlySalary = monthlySalary - deductions;
+    const deductions = sfs + afp + isr
+    const netMonthlySalary = netMonthlySalaryBeforeIsr - isr;
 
     return {
         monthlySalary,
