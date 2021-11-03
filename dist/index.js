@@ -54,3 +54,5 @@ function calculateDominicanPayroll(monthlySalary) {
     deductions
   };
 }
+
+export default calculateDominicanPayroll;
