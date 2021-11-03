@@ -1,7 +1,7 @@
 {
   "name": "calculadora-nomina-dominicana",
-  "version": "1.0.5",
-  "description": "Función para calcular la nómina dominicana",
+  "version": "1.0.6",
+  "description": "Función para calcular las retenciones de ley para empleados dominicanos",
   "main": "./dist/index.min.js",
   "types": "./src/types/index.d.ts",
   "scripts": {

@@ -1,6 +1,6 @@
 # calculadora-nomina-dominicana
 
-Función para calcular la nómina dominicana / Function that calculates the dominican payroll
+Función para calcular las retenciones de ley para empleados dominicanos / Function that calculates deductions for dominican employees.
 
 ## Instalación / Installation
 
